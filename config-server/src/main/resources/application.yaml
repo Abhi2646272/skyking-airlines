@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+
+  profiles:
+    active: native         # 🔥 THIS IS MUST
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:./config-repo/   # 🔥 LOCAL FOLDER
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,refresh,configprops
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

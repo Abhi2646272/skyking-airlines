@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="config-server" />
+        <module name="inventory-service" />
+        <module name="payment-service" />
+        <module name="booking-service" />
+        <module name="api-gateway" />
+        <module name="user-service" />
+        <module name="flight-service" />
+        <module name="notification-service" />
+        <module name="service-registry" />
+      </profile>
+      <profile name="Annotation profile for skyking-airlines" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="common-lib" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api-gateway" options="" />
+      <module name="booking-service" options="" />
+      <module name="common-lib" options="" />
+      <module name="config-server" options="" />
+      <module name="flight-service" options="" />
+      <module name="inventory-service" options="" />
+      <module name="notification-service" options="" />
+      <module name="payment-service" options="" />
+      <module name="user-service" options="" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: flight-service
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    consumer:
+      group-id: flight-service-group
+      auto-offset-reset: earliest
+    producer:
+      acks: all
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${FLIGHT_DB:skyking-airlines}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:12345}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka/}
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.skyking.flight: INFO
+    root: INFO
+
+application:
+  flight:
+    default-currency: INR
+    enable-search-cache: true
+    search-cache-ttl-ms: 30000
+    max-flight-results: 200
+    seat-sync-enable: true
+    seat-sync-cron: "0 */5 * * * *"
+
+services:
+  booking-service: http://booking-service
+  inventory-service: http://inventory-service
